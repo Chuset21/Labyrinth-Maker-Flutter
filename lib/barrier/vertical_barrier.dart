@@ -19,7 +19,7 @@ class _VerticalBarrierState extends BarrierState<VerticalBarrier> {
       child: AnimatedContainer(
         decoration: BoxDecoration(
           color: super.isOccupied ? Colors.red : Colors.green,
-          borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+          borderRadius: BorderRadius.circular(15.0),
         ),
         duration: const Duration(seconds: 1),
         curve: Curves.fastOutSlowIn,
