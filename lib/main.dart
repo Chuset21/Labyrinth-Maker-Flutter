@@ -16,24 +16,46 @@ class MyApp extends StatelessWidget {
           title: const Text('Testing States in Flutter'),
         ),
         body: Center(
-          child: ListView(
-            children: const [
-              Center(
-                child: HorizontalBarrier(isOccupied: false),
+          child: Column(
+            children: const <Widget>[
+              Flexible(
+                flex: 1,
+                child: Center(
+                  child: HorizontalBarrier(isOccupied: false),
+                ),
               ),
-              Center(
-                child: VerticalBarrier(isOccupied: false),
+              Flexible(
+                flex: 6,
+                child: Center(
+                  child: VerticalBarrier(isOccupied: false),
+                ),
               ),
-              Center(
-                child: HorizontalBarrier(isOccupied: true),
+              Flexible(
+                flex: 1,
+                child: Center(
+                  child: HorizontalBarrier(isOccupied: true),
+                ),
               ),
-              Center(
-                child: VerticalBarrier(isOccupied: true),
+              Flexible(
+                flex: 6,
+                child: Center(
+                  child: VerticalBarrier(isOccupied: true),
+                ),
               ),
+              // Center(
+              //   child: VerticalBarrier(isOccupied: false),
+              // ),
+              // Center(
+              //   child: HorizontalBarrier(isOccupied: true),
+              // ),
+              // Center(
+              //   child: VerticalBarrier(isOccupied: true),
+              // ),
             ],
           ),
         ),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
