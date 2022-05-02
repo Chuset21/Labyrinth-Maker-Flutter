@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Testing States in Flutter'),
         ),
-        body: const Board(),
+        body: const Center(
+          child: Board(),
+        ),
       ),
       debugShowCheckedModeBanner: false,
     );

@@ -17,10 +17,6 @@ class _HorizontalBarrierState extends BarrierState<HorizontalBarrier> {
       child: AnimatedContainer(
         decoration: BoxDecoration(
           color: super.isOccupied ? Colors.brown.shade500 : Colors.transparent,
-          border: Border.all(
-            color: Colors.brown.shade500,
-            width: 5,
-          ),
           borderRadius: BorderRadius.circular(15.0),
         ),
         duration: const Duration(seconds: 1),
