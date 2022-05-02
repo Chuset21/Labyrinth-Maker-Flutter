@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:labyrinth_maker/board.dart';
+import 'package:labyrinth_maker/cell.dart';
 import 'barrier/horizontal_barrier.dart';
 import 'barrier/vertical_barrier.dart';
 
@@ -15,35 +17,8 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Testing States in Flutter'),
         ),
-        body: Center(
-          child: Column(
-            children: const <Widget>[
-              Flexible(
-                flex: 1,
-                child: Center(
-                  child: HorizontalBarrier(isOccupied: false),
-                ),
-              ),
-              Flexible(
-                flex: 6,
-                child: Center(
-                  child: VerticalBarrier(isOccupied: false),
-                ),
-              ),
-              Flexible(
-                flex: 1,
-                child: Center(
-                  child: HorizontalBarrier(isOccupied: true),
-                ),
-              ),
-              Flexible(
-                flex: 6,
-                child: Center(
-                  child: VerticalBarrier(isOccupied: true),
-                ),
-              ),
-            ],
-          ),
+        body: const Center(
+          child: Board(),
         ),
       ),
       debugShowCheckedModeBanner: false,
