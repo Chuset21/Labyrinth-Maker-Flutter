@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
           title: const Text('Testing States in Flutter'),
         ),
         body: const Center(
-          child: Board(),
+          child: Board(
+            barriers: '111001000000000000000000001000000000000000000000000000000001',
+          ),
         ),
       ),
       debugShowCheckedModeBanner: false,
