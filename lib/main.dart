@@ -42,15 +42,6 @@ class MyApp extends StatelessWidget {
                   child: VerticalBarrier(isOccupied: true),
                 ),
               ),
-              // Center(
-              //   child: VerticalBarrier(isOccupied: false),
-              // ),
-              // Center(
-              //   child: HorizontalBarrier(isOccupied: true),
-              // ),
-              // Center(
-              //   child: VerticalBarrier(isOccupied: true),
-              // ),
             ],
           ),
         ),

@@ -12,10 +12,8 @@ class HorizontalBarrier extends Barrier {
 class _HorizontalBarrierState extends BarrierState<HorizontalBarrier> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      height: 50.0,
-      width: 300.0,
-      color: Colors.transparent,
+    return AspectRatio(
+      aspectRatio: 6 / 1,
       child: AnimatedContainer(
         decoration: BoxDecoration(
           color: super.isOccupied ? Colors.red : Colors.green,
@@ -24,8 +22,6 @@ class _HorizontalBarrierState extends BarrierState<HorizontalBarrier> {
         duration: const Duration(seconds: 1),
         curve: Curves.fastOutSlowIn,
       ),
-      duration: const Duration(seconds: 1),
-      curve: Curves.fastOutSlowIn,
     );
   }
 }

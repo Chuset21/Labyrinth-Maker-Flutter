@@ -12,20 +12,16 @@ class VerticalBarrier extends Barrier {
 class _VerticalBarrierState extends BarrierState<VerticalBarrier> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      height: 300.0,
-      width: 50.0,
-      color: Colors.transparent,
-      child: AnimatedContainer(
-        decoration: BoxDecoration(
-          color: super.isOccupied ? Colors.red : Colors.green,
-          borderRadius: BorderRadius.circular(15.0),
+    return AspectRatio(
+        aspectRatio: 1 / 6,
+        child: AnimatedContainer(
+          decoration: BoxDecoration(
+            color: super.isOccupied ? Colors.red : Colors.green,
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          duration: const Duration(seconds: 1),
+          curve: Curves.fastOutSlowIn,
         ),
-        duration: const Duration(seconds: 1),
-        curve: Curves.fastOutSlowIn,
-      ),
-      duration: const Duration(seconds: 1),
-      curve: Curves.fastOutSlowIn,
     );
   }
 }
