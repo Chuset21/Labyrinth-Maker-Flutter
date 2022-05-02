@@ -13,7 +13,7 @@ class _HorizontalBarrierState extends BarrierState<HorizontalBarrier> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 6 / 1,
+      aspectRatio: 19 / 4,
       child: AnimatedContainer(
         decoration: BoxDecoration(
           color: super.isOccupied ? Colors.brown.shade500 : Colors.transparent,
