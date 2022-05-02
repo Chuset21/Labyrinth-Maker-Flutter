@@ -16,7 +16,11 @@ class _VerticalBarrierState extends BarrierState<VerticalBarrier> {
         aspectRatio: 1 / 6,
         child: AnimatedContainer(
           decoration: BoxDecoration(
-            color: super.isOccupied ? Colors.red : Colors.green,
+            color: super.isOccupied ? Colors.brown.shade500 : Colors.transparent,
+            border: Border.all(
+              color: Colors.brown.shade500,
+              width: 5,
+            ),
             borderRadius: BorderRadius.circular(15.0),
           ),
           duration: const Duration(seconds: 1),
