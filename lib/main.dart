@@ -14,11 +14,8 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Testing dropdown menus in Flutter'),
         ),
-        body: Center(
-          child: Container(
-            padding: const EdgeInsets.all(30),
-            child: const InitialScreen(),
-          ),
+        body: const Center(
+          child: InitialScreen(),
         ),
       ),
     );
@@ -72,6 +69,7 @@ class _InitialScreenState extends State<InitialScreen> {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
+        const Spacer(),
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
@@ -142,6 +140,7 @@ class _InitialScreenState extends State<InitialScreen> {
             underline: const SizedBox.shrink(),
           ),
         ),
+        const Spacer(),
       ],
     );
   }
