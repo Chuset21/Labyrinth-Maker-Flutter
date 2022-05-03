@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:labyrinth_maker/board.dart';
 
 void main() => runApp(const MyApp());
 
@@ -161,13 +162,38 @@ class _InitialScreenState extends State<InitialScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const MyApp()), // Change this
+                    builder: (context) => const BoardScreen(
+                        barriers:
+                            '0000100000000000000000000001000000000000100000000000000000000001'),
+                  ), // TODO add back button
                 );
               },
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+class BoardScreen extends StatelessWidget {
+  const BoardScreen({Key? key, required this.barriers}) : super(key: key);
+
+  final String barriers;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Testing different screens in Flutter',
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Testing different screens in Flutter'),
+        ),
+        body: Center(
+          child: Board(barriers: barriers),
+        ),
+      ),
     );
   }
 }
