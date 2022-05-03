@@ -14,8 +14,11 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Testing dropdown menus in Flutter'),
         ),
-        body: const Center(
-          child: InitialScreen(),
+        body: Center(
+          child: Container(
+            padding: const EdgeInsets.all(30),
+            child: const InitialScreen(),
+          ),
         ),
       ),
     );
