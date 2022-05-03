@@ -8,17 +8,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Testing dropdown menus in Flutter',
+    return const MaterialApp(
+      title: 'Labyrinth Maker',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Testing dropdown menus in Flutter'),
-        ),
-        body: const Center(
-          child: InitialScreen(),
-        ),
-      ),
+      home: InitialScreen(),
     );
   }
 }
@@ -68,110 +61,117 @@ class _InitialScreenState extends State<InitialScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        const Spacer(),
-        Flexible(
-          flex: 1,
-          child: Center(
-            child: Row(
-              children: <Widget>[
-                const Spacer(),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    border: Border.all(
-                        color: Colors.blueAccent.shade100,
-                        style: BorderStyle.solid,
-                        width: 0.80),
-                  ),
-                  child: DropdownButton(
-                    elevation: 16,
-                    value: _optionValue,
-                    alignment: AlignmentDirectional.center,
-                    items: _optionList
-                        .map<DropdownMenuItem<String>>((String value) =>
-                            DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value, textAlign: TextAlign.center),
-                            ))
-                        .toList(),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        _optionValue = newValue!;
-                      });
-                    },
-                    underline: const SizedBox.shrink(),
-                  ),
-                ),
-                const Spacer(),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    border: Border.all(
-                        color: Colors.blueAccent.shade100,
-                        style: BorderStyle.solid,
-                        width: 0.80),
-                  ),
-                  child: DropdownButton(
-                    elevation: 16,
-                    value: _optionValue.compareTo('Difficulty') == 0
-                        ? _currentDifficulty
-                        : _currentBarrierNum.toString(),
-                    alignment: AlignmentDirectional.center,
-                    items: _optionValue.compareTo('Difficulty') == 0
-                        ? _difficulties
-                            .map((String value) => DropdownMenuItem<String>(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Generate your board'),
+      ),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            const Spacer(),
+            Flexible(
+              flex: 1,
+              child: Center(
+                child: Row(
+                  children: <Widget>[
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        border: Border.all(
+                            color: Colors.blueAccent.shade100,
+                            style: BorderStyle.solid,
+                            width: 0.80),
+                      ),
+                      child: DropdownButton(
+                        elevation: 16,
+                        value: _optionValue,
+                        alignment: AlignmentDirectional.center,
+                        items: _optionList
+                            .map<DropdownMenuItem<String>>((String value) =>
+                                DropdownMenuItem<String>(
                                   value: value,
                                   child:
                                       Text(value, textAlign: TextAlign.center),
                                 ))
-                            .toList()
-                        : _barrierNumbers
-                            .map((int value) => DropdownMenuItem<String>(
-                                  value: value.toString(),
-                                  child: Text(value.toString(),
-                                      textAlign: TextAlign.center),
-                                ))
                             .toList(),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        if (_optionValue.compareTo('Difficulty') == 0) {
-                          _currentDifficulty = newValue!;
-                        } else {
-                          _currentBarrierNum = int.parse(newValue!);
-                        }
-                      });
-                    },
-                    underline: const SizedBox.shrink(),
-                  ),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _optionValue = newValue!;
+                          });
+                        },
+                        underline: const SizedBox.shrink(),
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        border: Border.all(
+                            color: Colors.blueAccent.shade100,
+                            style: BorderStyle.solid,
+                            width: 0.80),
+                      ),
+                      child: DropdownButton(
+                        elevation: 16,
+                        value: _optionValue.compareTo('Difficulty') == 0
+                            ? _currentDifficulty
+                            : _currentBarrierNum.toString(),
+                        alignment: AlignmentDirectional.center,
+                        items: _optionValue.compareTo('Difficulty') == 0
+                            ? _difficulties
+                                .map((String value) => DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value,
+                                          textAlign: TextAlign.center),
+                                    ))
+                                .toList()
+                            : _barrierNumbers
+                                .map((int value) => DropdownMenuItem<String>(
+                                      value: value.toString(),
+                                      child: Text(value.toString(),
+                                          textAlign: TextAlign.center),
+                                    ))
+                                .toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            if (_optionValue.compareTo('Difficulty') == 0) {
+                              _currentDifficulty = newValue!;
+                            } else {
+                              _currentBarrierNum = int.parse(newValue!);
+                            }
+                          });
+                        },
+                        underline: const SizedBox.shrink(),
+                      ),
+                    ),
+                    const Spacer(),
+                  ],
                 ),
-                const Spacer(),
-              ],
+              ),
             ),
-          ),
-        ),
-        Flexible(
-          flex: 1,
-          child: Center(
-            child: ElevatedButton(
-              child: const Text('Generate Board'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const BoardScreen(
-                        barriers:
-                            '0000100000000000000000000001000000000000100000000000000000000001'),
-                  ), // TODO add back button
-                );
-              },
+            Flexible(
+              flex: 1,
+              child: Center(
+                child: ElevatedButton(
+                  child: const Text('Generate Board'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const BoardScreen(
+                              barriers:
+                                  '0000100000000000000000000001000000000000100000000000000000000001'),
+                        ));
+                  },
+                ),
+              ),
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
@@ -183,16 +183,12 @@ class BoardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Testing different screens in Flutter',
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Testing different screens in Flutter'),
-        ),
-        body: Center(
-          child: Board(barriers: barriers),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Generated board'),
+      ),
+      body: Center(
+        child: Board(barriers: barriers),
       ),
     );
   }
