@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Testing dropdown menus in Flutter'),
         ),
-        body: const InitialScreen(),
+        body: const Center(
+          child: InitialScreen(),
+        ),
       ),
     );
   }
@@ -33,23 +35,33 @@ class _InitialScreenState extends State<InitialScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField(
-      elevation: 16,
-      decoration: const InputDecoration(),
-      value: _firstListValue,
-      alignment: AlignmentDirectional.center,
-      items: _firstListItems
-          .map<DropdownMenuItem<String>>(
-              (String value) => DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value, textAlign: TextAlign.center),
-                  ))
-          .toList(),
-      onChanged: (String? newValue) {
-        setState(() {
-          _firstListValue = newValue!;
-        });
-      },
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15.0),
+        border: Border.all(
+            color: Colors.blueAccent.shade100,
+            style: BorderStyle.solid,
+            width: 0.80),
+      ),
+      child: DropdownButton(
+        elevation: 16,
+        value: _firstListValue,
+        alignment: AlignmentDirectional.center,
+        items: _firstListItems
+            .map<DropdownMenuItem<String>>(
+                (String value) => DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value, textAlign: TextAlign.center),
+                    ))
+            .toList(),
+        onChanged: (String? newValue) {
+          setState(() {
+            _firstListValue = newValue!;
+          });
+        },
+        underline: const SizedBox.shrink(),
+      ),
     );
   }
 }
