@@ -28,7 +28,7 @@ class _InitialScreenState extends State<InitialScreen> {
   String _optionValue = 'Difficulty';
 
   static const _difficulties = ['Easy', 'Medium', 'Hard', 'Very Hard'];
-  final _barrierNumbers = List<int>.generate(60, (index) => index);
+  final _barrierNumbers = List<int>.generate(25, (index) => index).skip(1);
 
   String _currentDifficulty = 'Very Hard';
   int _currentBarrierNum = 24;
