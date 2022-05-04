@@ -45,7 +45,10 @@ class _InitialScreenState extends State<InitialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Generate your board'),
+        title: const Text(
+          'Generate your board',
+          textAlign: TextAlign.center,
+        ),
       ),
       body: Center(
         child: Column(
@@ -169,7 +172,10 @@ class BoardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Generated board'),
+        title: const Text(
+          'Generated board',
+          textAlign: TextAlign.center,
+        ),
       ),
       body: Center(
         child: Board(barriers: BoardMaker().getListOfBarriers(barrierNum)),
