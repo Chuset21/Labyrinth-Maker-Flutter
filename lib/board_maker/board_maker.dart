@@ -3,13 +3,14 @@ import 'dart:math';
 import 'package:labyrinth_maker/board_maker/graph.dart';
 
 class BoardMaker {
+  static const _cellNumber = 36;
   static const _barrierLocations = 60;
   static const _rowLength = 6;
   static const _maxBarriers = 24;
 
   final Map<int, List<int>> _map = {};
 
-  final _graph = Graph(_barrierLocations);
+  final _graph = Graph(_cellNumber);
   final _canRemoveEdgeSet = [for (int i = 0; i < _barrierLocations; i++) i];
   final Set _barrierEdgeSet = {};
   final _rng = Random();
@@ -21,12 +22,16 @@ class BoardMaker {
     for (int i = 0; i < _rowLength; i++) {
       for (int j = 0; j < limit; j++) {
         final x = i * _rowLength + j;
-        _map[count++] = [x, x + 1];
+        final edge = [x, x + 1];
+        _graph.addEdge(edge[0], edge[1]);
+        _map[count++] = edge;
       }
 
       for (int j = 0; j < _rowLength && i < limit; j++) {
         final x = i * _rowLength + j;
-        _map[count++] = [x, x + _rowLength];
+        final edge = [x, x + _rowLength];
+        _graph.addEdge(edge[0], edge[1]);
+        _map[count++] = edge;
       }
     }
   }
@@ -43,7 +48,7 @@ class BoardMaker {
     }
 
     int edge = removeRandEdge();
-    while (_graph.isConnected()) {
+    while (!_graph.isConnected()) {
       final x = _map[edge]!;
       _graph.addEdge(x[0], x[1]);
 
@@ -61,12 +66,9 @@ class BoardMaker {
       _removeRandomEdge();
     }
 
-    print('Barrier edge set: ${_barrierEdgeSet.toList()..sort()}\n');
-
     for (int e in _barrierEdgeSet) {
       result[e] = true;
     }
-    print('Result: $result\n');
 
     return result;
   }

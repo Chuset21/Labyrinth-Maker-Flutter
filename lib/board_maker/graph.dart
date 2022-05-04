@@ -23,12 +23,7 @@ class Graph {
 
     _dfs(0, visited);
 
-    int count = 0;
-    for (int i = 0; i < visited.length; i++) {
-      if (visited[i]) count++;
-    }
-    print('Count: $count, Visited length: ${visited.length}');
-    return vertices == count;
+    return vertices == visited.where((element) => element).length;
   }
 
   void _dfs(int source, List<bool> visited) {
