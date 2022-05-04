@@ -53,8 +53,7 @@ class _InitialScreenState extends State<InitialScreen> {
       body: Center(
         child: Column(
           children: <Widget>[
-            const Spacer(),
-            const Spacer(),
+            const Spacer(flex: 2),
             Flexible(
               flex: 3,
               child: Center(
