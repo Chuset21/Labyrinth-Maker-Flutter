@@ -1,7 +1,7 @@
 class Graph {
   Graph(this.vertices) {
     for (int i = 0; i < vertices; i++) {
-      adjList[i] = [];
+      adjList.add([]);
     }
   }
 
@@ -23,7 +23,12 @@ class Graph {
 
     _dfs(0, visited);
 
-    return vertices == visited.where((element) => element).length;
+    int count = 0;
+    for (int i = 0; i < visited.length; i++) {
+      if (visited[i]) count++;
+    }
+    print('Count: $count, Visited length: ${visited.length}');
+    return vertices == count;
   }
 
   void _dfs(int source, List<bool> visited) {

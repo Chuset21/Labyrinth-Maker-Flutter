@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:labyrinth_maker/board.dart';
+import 'package:labyrinth_maker/board_maker/board_maker.dart';
 
 void main() => runApp(const MyApp());
 
@@ -142,9 +143,11 @@ class _InitialScreenState extends State<InitialScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const BoardScreen(
-                              barriers:
-                                  '0000100000000000000000000001000000000000100000000000000000000001'),
+                          builder: (context) => BoardScreen(
+                              barrierNum:
+                                  _optionValue.compareTo('Difficulty') == 0
+                                      ? _difficultyMap[_currentDifficulty]!
+                                      : _currentBarrierNum),
                         ));
                   },
                 ),
@@ -158,9 +161,9 @@ class _InitialScreenState extends State<InitialScreen> {
 }
 
 class BoardScreen extends StatelessWidget {
-  const BoardScreen({Key? key, required this.barriers}) : super(key: key);
+  const BoardScreen({Key? key, required this.barrierNum}) : super(key: key);
 
-  final String barriers;
+  final int barrierNum;
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +172,7 @@ class BoardScreen extends StatelessWidget {
         title: const Text('Generated board'),
       ),
       body: Center(
-        child: Board(barriers: barriers),
+        child: Board(barriers: BoardMaker().getListOfBarriers(barrierNum)),
       ),
     );
   }
