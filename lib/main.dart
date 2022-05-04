@@ -30,6 +30,13 @@ class _InitialScreenState extends State<InitialScreen> {
   static const _difficulties = ['Easy', 'Medium', 'Hard', 'Very Hard'];
   final _barrierNumbers = List<int>.generate(25, (index) => index).skip(1);
 
+  static const _difficultyMap = {
+    'Easy': 12,
+    'Medium': 16,
+    'Hard': 20,
+    'Very Hard': 24
+  };
+
   String _currentDifficulty = 'Very Hard';
   int _currentBarrierNum = 24;
 
