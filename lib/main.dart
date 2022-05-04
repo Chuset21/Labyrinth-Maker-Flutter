@@ -54,8 +54,9 @@ class _InitialScreenState extends State<InitialScreen> {
         child: Column(
           children: <Widget>[
             const Spacer(),
+            const Spacer(),
             Flexible(
-              flex: 1,
+              flex: 3,
               child: Center(
                 child: Row(
                   children: <Widget>[
@@ -138,22 +139,32 @@ class _InitialScreenState extends State<InitialScreen> {
               ),
             ),
             Flexible(
-              flex: 1,
-              child: Center(
-                child: ElevatedButton(
-                  child: const Text('Generate Board'),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BoardScreen(
-                              barrierNum:
-                                  _optionValue.compareTo('Difficulty') == 0
-                                      ? _difficultyMap[_currentDifficulty]!
-                                      : _currentBarrierNum),
-                        ));
-                  },
+              flex: 3,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  onPrimary: Colors.white,
+                  shadowColor: Colors.blueAccent,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  minimumSize: const Size(200, 50),
                 ),
+                child: const Text(
+                  'Generate Board',
+                  textAlign: TextAlign.center,
+                  textScaleFactor: 1.3,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BoardScreen(
+                            barrierNum:
+                                _optionValue.compareTo('Difficulty') == 0
+                                    ? _difficultyMap[_currentDifficulty]!
+                                    : _currentBarrierNum),
+                      ));
+                },
               ),
             ),
           ],
