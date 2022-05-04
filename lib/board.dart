@@ -6,10 +6,9 @@ import 'package:labyrinth_maker/cell.dart';
 class Board extends StatelessWidget {
   const Board({Key? key, required this.barriers}) : super(key: key);
 
-  final String barriers;
+  final List<bool> barriers;
 
-  bool checkBit(int bit) =>
-      barriers[barriers.length - bit - 1].compareTo('1') == 0;
+  bool checkBit(int bit) => barriers[bit];
 
   @override
   Widget build(BuildContext context) {
