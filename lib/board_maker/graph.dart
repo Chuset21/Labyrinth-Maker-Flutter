@@ -13,6 +13,11 @@ class Graph {
     adjList[destination].add(source);
   }
 
+  void removeEdge(int source, int destination) {
+    adjList[source].remove(destination);
+    adjList[destination].remove(source);
+  }
+
   bool isConnected() {
     final List<bool> visited = List.filled(vertices, false);
 
