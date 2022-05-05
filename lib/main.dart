@@ -49,6 +49,7 @@ class _InitialScreenState extends State<InitialScreen> {
           'Generate your board',
           textAlign: TextAlign.center,
         ),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
@@ -186,6 +187,7 @@ class BoardScreen extends StatelessWidget {
           'Generated board',
           textAlign: TextAlign.center,
         ),
+        centerTitle: true,
       ),
       body: Center(
         child: Board(barriers: BoardMaker().getListOfBarriers(barrierNum)),
